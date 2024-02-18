@@ -315,6 +315,11 @@
 ## Extra settings overrides to pass to the tornado application.
 #c.JupyterHub.tornado_settings = {}
 
+
+c.JupyterHub.tornado_settings = {'headers': {'Content-Security-Policy': "frame-ancestors *;"}}
+c.Spawner.args = ['--NotebookApp.tornado_settings={"headers":{"Content-Security-Policy": "frame-ancestors *;"}}']
+
+
 ## Trust user-provided tokens (via JupyterHub.service_tokens) to have good
 #  entropy.
 #  
@@ -749,3 +754,5 @@ c.LocalAuthenticator.create_system_users = True
 
 ## The number of threads to allocate for encryption
 #c.CryptKeeper.n_threads = 2
+
+c.NotebookApp.disable_check_xsrf = True
